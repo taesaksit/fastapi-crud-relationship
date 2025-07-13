@@ -3,17 +3,11 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from ..schemas import category as schemas
 from ..crud import category as crud
-from ..database import SessionLocal
+from ..database import get_db
 
 
 router = APIRouter(prefix="/category" , tags=["category"])
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
         
 @router.post("/", response_model=schemas.CategoryResponse)
 def create_category(category: schemas.CategoryCreate, db:Session = Depends(get_db)):

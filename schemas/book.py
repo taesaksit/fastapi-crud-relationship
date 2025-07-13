@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel,Field
 from typing import  Optional
 from .category import CategoryResponse
 
@@ -8,7 +8,7 @@ class BookBase(BaseModel):
     category_id: int
     
 class BookCreate(BookBase):
-    pass
+    title: str = Field(strip_whitespace=True, min_length=3)
 
 class BookResponse(BookBase):
     id: int
