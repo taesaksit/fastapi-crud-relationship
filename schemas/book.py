@@ -13,5 +13,5 @@ class BookCreate(BookBase):
 class BookResponse(BookBase):
     id: int
     category: Optional[CategoryResponse]
-    class config:
-        orm_mode = True
+    class Config:
+        from_attributes = True
