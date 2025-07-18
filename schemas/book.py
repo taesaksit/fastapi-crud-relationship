@@ -13,5 +13,6 @@ class BookCreate(BookBase):
 class BookResponse(BookBase):
     id: int
     category:CategoryResponse
+    
     class Config:
         from_attributes = True
